@@ -43,9 +43,18 @@
         currentImage = (currentImage + 1) % 2;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(images[currentImage], 0, 0, canvas.width, canvas.height);
+          drawText();
       });
     });
 
+        function drawText() {
+      ctx.save();
+      ctx.fillStyle = 'white';
+      ctx.font = '16px Arial';
+      ctx.fillText('Madaovi Uzdasi: '+ah_count, 10, 20);
+      ctx.restore();
+    }
+    
     function pinchEffect(callback) {
       let scale = 1.0;
       let direction = -0.05;
@@ -60,10 +69,7 @@
         ctx.scale(scale, scale);
         ctx.drawImage(images[currentImage], -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         ctx.restore();
-        // Always draw text after scaling image
-    ctx.fillStyle = 'white';
-    ctx.font = '16px Arial';
-    ctx.fillText('Madaovi Uzdasi: '+ah_count, 10, 20);
+
         
         i++;
         if (i === steps) {
